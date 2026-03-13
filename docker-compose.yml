@@ -16,6 +16,7 @@ services:
         condition: service_healthy
     networks:
       - hotel-network
+      - dokploy-network
     restart: unless-stopped
 
   mongodb:
@@ -40,3 +41,5 @@ volumes:
 networks:
   hotel-network:
     driver: bridge
+  dokploy-network:
+    external: true
