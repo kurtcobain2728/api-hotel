@@ -3,8 +3,8 @@ services:
     build:
       context: .
       target: production
-    ports:
-      - "${PORT:-3001}:3000"
+    expose:
+      - "3000"
     environment:
       - NODE_ENV=production
       - PORT=3000
@@ -20,8 +20,8 @@ services:
 
   mongodb:
     image: mongo:7
-    ports:
-      - "27017:27017"
+    expose:
+      - "27017"
     volumes:
       - mongodb_data:/data/db
     healthcheck:
