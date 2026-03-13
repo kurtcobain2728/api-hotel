@@ -14,9 +14,6 @@ services:
     depends_on:
       mongodb:
         condition: service_healthy
-    networks:
-      - hotel-network
-      - dokploy-network
     restart: unless-stopped
 
   mongodb:
@@ -31,15 +28,7 @@ services:
       timeout: 5s
       retries: 5
       start_period: 10s
-    networks:
-      - hotel-network
     restart: unless-stopped
 
 volumes:
   mongodb_data:
-
-networks:
-  hotel-network:
-    driver: bridge
-  dokploy-network:
-    external: true
