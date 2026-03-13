@@ -3,6 +3,8 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+ENV HUSKY=0
+
 COPY package.json package-lock.json* ./
 RUN npm install
 
@@ -14,6 +16,8 @@ RUN npm run build
 FROM node:20-alpine AS production
 
 WORKDIR /app
+
+ENV HUSKY=0
 
 # Create non-root user
 RUN addgroup -g 1001 -S appgroup && \
