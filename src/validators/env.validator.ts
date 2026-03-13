@@ -3,7 +3,7 @@ import { z } from 'zod';
 const rawEnvSchema = z.object({
   PORT: z
     .string()
-    .default('3000')
+    .default('8888')
     .transform((val) => parseInt(val, 10))
     .pipe(z.number().int().min(1).max(65535)),
 

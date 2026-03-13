@@ -31,9 +31,9 @@ COPY --from=builder /app/dist ./dist
 # Switch to non-root user
 USER appuser
 
-EXPOSE 3000
+EXPOSE 8888
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-  CMD wget -qO- http://localhost:3000/api/v1/health || exit 1
+  CMD wget -qO- http://localhost:8888/api/v1/health || exit 1
 
 CMD ["node", "dist/server.js"]
